@@ -19,7 +19,8 @@ Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
 
-
+Style:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
