@@ -1,3 +1,11 @@
+
+class Nameable
+  def correct_name
+    raise NotImplementedError
+  end
+end
+
+
 class Person
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
