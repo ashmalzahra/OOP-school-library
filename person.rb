@@ -48,3 +48,8 @@ class CapitalizeDecorator < Decorator
   end
 end
 
+class TrimmerDecorator < Decorator
+  def correct_name
+   if (@nameable.correct_name.length > 10) @nameable.correct_name.trim
+  end
+end
