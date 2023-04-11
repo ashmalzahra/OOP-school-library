@@ -31,3 +31,14 @@ class Person < Nameable
 
   private :of_age?
 end
+
+class Decorator < Nameable
+  def initialize(nameable)
+    @nameable = nameable
+  end
+
+  def correct_name
+    @nameable.correct_name
+  end
+end
+
