@@ -1,13 +1,12 @@
-
 class Nameable
   def correct_name
     raise NotImplementedError
   end
 end
 
-
 class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age
@@ -34,6 +33,7 @@ end
 
 class Decorator < Nameable
   def initialize(nameable)
+    super()
     @nameable = nameable
   end
 
@@ -50,6 +50,10 @@ end
 
 class TrimmerDecorator < Decorator
   def correct_name
-   if (@nameable.correct_name.length > 10) @nameable.correct_name.trim
+    if @nameable.correct_name.length > 10
+      @nameable.correct_name.strip[0..9]
+    else
+      @nameable.correct_name
+    end
   end
 end
