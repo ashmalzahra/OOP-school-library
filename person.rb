@@ -1,6 +1,6 @@
 class Nameable
-  attr_accessor :name, :age
-  attr_reader :id, :rental
+  attr_accessor :name, :age, :rental
+  attr_reader :id
 
   def correct_name
     raise NotImplementedError
@@ -56,5 +56,9 @@ class TrimmerDecorator < Decorator
     else
       @nameable.correct_name
     end
+  end
+
+  def add_rental(book, date)
+    Rental.new(date, self, book)
   end
 end
