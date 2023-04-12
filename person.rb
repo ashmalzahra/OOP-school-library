@@ -1,4 +1,7 @@
 class Nameable
+  attr_accessor :name, :age
+  attr_reader :id, :rental
+
   def correct_name
     raise NotImplementedError
   end
@@ -11,10 +14,8 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rental = []
   end
-
-  attr_accessor :name, :age
-  attr_reader :id
 
   def of_age?
     @age >= 18
