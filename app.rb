@@ -20,7 +20,13 @@ class App
 
   def list_people
     puts "No person registered yet" if @people.empty?
-    @people.map { |person| puts "Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+    @people.each do |person|
+      if person.is_a? Student
+        puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      elsif person.is_a? Teacher
+        puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      end
+    end
   end
 
   def create_person
