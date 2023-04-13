@@ -60,7 +60,7 @@ class App
       puts "Invalid input. Please enter 'Y' or 'N'"
     end
 
-    student = Student.new(age, name, parent_permission: parent_permission)
+    student = Student.new(age, name, parent_permission)
     @people << student
 
     puts 'Student created successfully'
