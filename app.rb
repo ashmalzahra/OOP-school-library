@@ -98,6 +98,20 @@ class  App
       
         puts 'Rental created successfully'
     end
+
+    def list_rentals
+        print 'ID of person: '
+        id = gets.chomp.to_i
+
+        puts 'Rentals:'
+        @rentals.each do |rental|
+        puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
+    end
+
+    def exit_method
+        abort 
+          "Thank you for using the OOP School Library App!"
+      end
 end
 
 
