@@ -1,5 +1,4 @@
 # rubocop:disable Metrics/CyclomaticComplexity
-
 require './app'
 
 def main

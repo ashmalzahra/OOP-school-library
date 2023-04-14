@@ -10,7 +10,6 @@ class App
   def initialize
     @people = []
     @books = []
-    @rentals = []
   end
 
   def list_books
@@ -49,7 +48,7 @@ class App
     print 'Name: '
     name = gets.chomp
     print 'Has parent permission [Y/N]? '
-    permission = gets.chomp.downcase
+    permission = gets.chomp
 
     case permission
     when 'y'
