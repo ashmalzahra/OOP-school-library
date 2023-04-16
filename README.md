@@ -145,8 +145,8 @@ N/A
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **preserve data.**
-- [ ] **unit tests.**
+- [ ] **preserve data**
+- [ ] **unit tests**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
