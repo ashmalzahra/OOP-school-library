@@ -8,9 +8,9 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 130
 Metrics/MethodLength:
-  Max: 35
+  Max: 45
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:

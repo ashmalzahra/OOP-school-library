@@ -3,14 +3,17 @@ require './person'
 require './student'
 require './teacher'
 require './rental'
+require 'json'
+require './storage'
 
 class App
   attr_accessor :people, :books, :rentals
 
+  include Storage
   def initialize
-    @people = []
-    @books = []
-    @rentals = []
+    @people = load_people || []
+    @books = load_books || []
+    @rentals = load_rentals || []
   end
 
   def list_books
