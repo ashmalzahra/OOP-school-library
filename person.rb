@@ -1,5 +1,5 @@
 class Nameable
-  attr_accessor :name, :age, :rental
+  attr_accessor :name, :age, :rental, :parent_permission
   attr_reader :id
 
   def correct_name

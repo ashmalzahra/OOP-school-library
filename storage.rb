@@ -18,9 +18,10 @@ module Storage
     @people.each do |people|
       if people.instance_of?(::Student)
         people_ojects << { age: people.age, name: people.name,
-                           parent_permission: people.parent_permission, id: people.id, type: 'Student'  }
+                           parent_permission: people.parent_permission, id: people.id, type: 'Student' }
       else
-        people_ojects << { age: people.age, specialization: people.specialization, name: people.name, id: people.id, type: 'Teacher'  }
+        people_ojects << { age: people.age, specialization: people.specialization, name: people.name, id: people.id,
+                           type: 'Teacher' }
       end
     end
     File.write('people.json', people_ojects.to_json)
@@ -32,13 +33,13 @@ module Storage
     @rentals.each do |rental|
       book = { title: rental.book.title, author: rental.book.author }
       if rental.person.instance_of?(::Student)
-        student = { age: rental.person.age, name: rental.person.name,
+        student = { age: rental.person.age, name: rental.person.name, parent_permission: rental.person.parent_permission,
                     id: rental.person.id, type: 'Student' }
-        rental_ojects << { date: rental.date, book: book, person: student }
+        rental_ojects << { date: rental.date, person: student, book: book }
       else
         teacher = { age: rental.person.age, specialization: rental.person.specialization, name: rental.person.name,
-                    id: rental.person.id, type: 'Teacher'  }
-        rental_ojects << { date: rental.date, book: book, person: teacher }
+                    id: rental.person.id, type: 'Teacher' }
+        rental_ojects << { date: rental.date, person: teacher, book: book }
       end
     end
     File.write('rentals.json', rental_ojects.to_json)
@@ -59,12 +60,10 @@ module Storage
       data = JSON.parse(File.read('people.json'))
       data.each do |person|
         if person['type'] == 'Student'
-          student = Student.new(person['age'], person['name'])
-          student.id = person['id']
+          student = Student.new(person['age'], person['name'], person['parent_permission'])
           list_people << student
         else
           teacher = Teacher.new(person['age'], person['specialization'], person['name'])
-          teacher.id = person['id']
           list_people << teacher
         end
       end
@@ -79,13 +78,12 @@ module Storage
       data.each do |rental|
         book = Book.new(rental['book']['title'], rental['book']['author'])
         if rental['person']['type'] == 'Student'
-          student = Student.new(rental['person']['age'], rental['person']['name'])
-          student.id = rental['person']['id']
-          list_rentals << Rental.new(rental['date'], book, student)
+          student = Student.new(rental['person']['age'], rental['person']['name'],
+                                rental['person']['parent_permission'])
+          list_rentals << Rental.new(rental['date'], student, book)
         else
           teacher = Teacher.new(rental['person']['age'], rental['person']['specialization'], rental['person']['name'])
-          teacher.id = rental['person']['id']
-          list_rentals << Rental.new(rental['date'], book, teacher)
+          list_rentals << Rental.new(rental['date'], teacher, book)
         end
       end
     end

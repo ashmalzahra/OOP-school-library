@@ -8,6 +8,7 @@ require './storage'
 
 class App
   attr_accessor :people, :books, :rentals
+
   include Storage
   def initialize
     @people = load_people || []
@@ -62,7 +63,7 @@ class App
       puts "Invalid input. Please enter 'Y' or 'N'"
     end
 
-    student = Student.new(age, name, parent_permission : permission)
+    student = Student.new(age, name, parent_permission)
     @people << student
 
     puts 'Student created successfully'
