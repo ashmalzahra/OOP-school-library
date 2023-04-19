@@ -34,6 +34,7 @@ def main
     when 6
       app.list_rentals
     when 7
+      app.preserve_data
       abort '
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       Thank you for using the OOP School Library App!

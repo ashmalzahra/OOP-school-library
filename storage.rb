@@ -1,6 +1,6 @@
 require 'json'
 module Storage
-  def preseve_data
+  def preserve_data
     puts "All the data has been saved successfully.\n"
     save_books
     save_people
@@ -89,6 +89,6 @@ module Storage
         end
       end
     end
-    list_entals
+    list_rentals
   end
 end
