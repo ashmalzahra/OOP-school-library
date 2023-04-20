@@ -29,6 +29,10 @@ class Person < Nameable
     name
   end
 
+  def add_rental(book, date)
+    Rental.new(date, self, book)
+  end
+
   private :of_age?
 end
 
@@ -56,9 +60,5 @@ class TrimmerDecorator < Decorator
     else
       @nameable.correct_name
     end
-  end
-
-  def add_rental(book, date)
-    Rental.new(date, self, book)
   end
 end
